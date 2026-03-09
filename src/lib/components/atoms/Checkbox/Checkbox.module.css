@@ -1,0 +1,74 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  gap: 12px;
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.customCheck {
+  height: 20px;
+  width: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-borderLight);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.inputContainer:hover .customCheck {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hiddenInput:checked + .customCheck {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px var(--glow-secondary);
+}
+
+.customCheck::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.hiddenInput:checked + .customCheck::after {
+  display: block;
+}
+
+.hiddenInput:focus-visible + .customCheck {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.label {
+  cursor: pointer;
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+.errorText {
+  color: #ff4d4d;
+  margin-left: 32px;
+}

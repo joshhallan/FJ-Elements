@@ -1,0 +1,51 @@
+:root {
+  --font-geist-sans: "Geist Sans";
+  --font-geist-mono: "Geist Mono";
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-white);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg, #0d0221);
+  color: var(--color-white, #ffffff);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-secondary, #30c0b7);
+  outline-offset: 4px;
+}
+
+::selection {
+  background-color: var(--color-primary, #ee227d);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg, #0d0221);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface, #1a0536);
+  border-radius: 10px;
+  border: 2px solid var(--color-bg, #0d0221);
+}

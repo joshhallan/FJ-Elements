@@ -1,0 +1,60 @@
+.base {
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+  color: inherit;
+  font-family: var(--font-sans);
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+}
+
+.h1 {
+  font-size: var(--size-h1);
+  color: var(--color-primary);
+}
+.h2 {
+  font-size: var(--size-h2);
+  color: var(--color-secondary);
+}
+.h3 {
+  font-size: var(--size-h3);
+  color: var(--color-accent);
+}
+.h4 {
+  font-size: var(--size-h4);
+}
+.p {
+  font-size: var(--size-body);
+}
+.small {
+  font-size: var(--size-small);
+  color: var(--color-muted);
+}
+
+/* Modifiers */
+.glow {
+  text-shadow: var(--glow-pink);
+}
+
+.h1.glow,
+.h1 {
+  text-shadow: 0 0 15px rgba(238, 34, 125, 0.4);
+}
+
+.gradient {
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,65 @@
+.tooltipWrapper {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltipBox {
+  position: absolute;
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-secondary);
+  font-size: var(--size-small);
+  white-space: nowrap;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-base);
+  box-shadow: var(--glow-cyan);
+  pointer-events: none;
+}
+
+/* Positioning Logic */
+.top {
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+}
+
+.bottom {
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.left {
+  right: 125%;
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+}
+
+.right {
+  left: 125%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-10px);
+}
+
+/* Hover States */
+.tooltipWrapper:hover .tooltipBox,
+.tooltipWrapper:focus-within .tooltipBox {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0); /* Reset for Top/Bottom */
+}
+
+/* Specialized Reset for Left/Right Hover */
+.tooltipWrapper:hover .left,
+.tooltipWrapper:focus-within .left {
+  transform: translateY(-50%) translateX(0);
+}
+.tooltipWrapper:hover .right,
+.tooltipWrapper:focus-within .right {
+  transform: translateY(-50%) translateX(0);
+}

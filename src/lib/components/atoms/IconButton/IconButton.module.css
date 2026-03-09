@@ -1,0 +1,59 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  transition: all 0.3s ease;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  color: var(--color-white);
+  outline: none;
+}
+
+/* Sizes */
+.sm {
+  width: 32px;
+  font-size: 0.9rem;
+}
+.md {
+  width: 42px;
+  font-size: 1.1rem;
+}
+.lg {
+  width: 52px;
+  font-size: 1.4rem;
+}
+
+/* Variants */
+.ghost {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-white);
+}
+
+.primary:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: var(--effects-glowPink);
+  background: color-mix(in srgb, var(--color-primary), transparent 90%);
+}
+
+.secondary:hover {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  box-shadow: var(--effects-glowCyan);
+  background: color-mix(in srgb, var(--color-secondary), transparent 90%);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

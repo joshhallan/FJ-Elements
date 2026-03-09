@@ -1,0 +1,58 @@
+:root {
+  /* 🎨 Colors */
+  --color-bg: #0d0221;
+  --color-surface: #1a0536;
+  --color-primary: #ee227d;
+  --color-secondary: #30c0b7;
+  --color-accent: #fd8083;
+  --color-muted: #498099;
+  --color-white: #ffffff;
+  --color-textMuted: rgba(255, 255, 255, 0.8);
+  --color-textDefault: rgba(255, 255, 255, 0.8);
+  --color-borderLight: rgba(255, 255, 255, 0.05);
+
+  /* 🖋️ Typography: Fonts */
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+
+  --size-h1: clamp(2.5rem, 8vw, 4.5rem);
+  --size-h2: clamp(2rem, 6vw, 3rem);
+  --size-h3: clamp(1.5rem, 4vw, 2.25rem);
+  --size-h4: clamp(1.25rem, 3vw, 1.75rem);
+  --size-body: clamp(1rem, 1vw, 1.125rem);
+  --size-small: 0.875rem;
+
+  /* 🖋️ Typography: Weights & Spacing */
+  --weight-normal: 400;
+  --weight-bold: 700;
+  --weight-black: 900;
+  --line-height-tight: 1.1;
+  --line-height-relaxed: 1.6;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-widest: 0.05em;
+
+  /* 📏 Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+
+  /* 📐 Layout */
+  --layout-container: 1200px;
+  --layout-content-max-width: 70ch;
+  --layout-container-padding: 1.5rem;
+
+  /* 🔘 Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 10px;
+  --radius-full: 9999px;
+
+  /* ✨ Effects */
+  --glow-pink: 0 0 15px rgba(238, 34, 125, 0.5);
+  --glow-cyan: 0 0 15px rgba(48, 192, 183, 0.4);
+  --glow-accent: 0 0 20px rgba(253, 128, 131, 0.6);
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
