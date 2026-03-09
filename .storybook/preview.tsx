@@ -11,7 +11,7 @@ import "@fontsource/geist-mono/900.css";
 
 import "../src/lib/styles/layout.css";
 import "../src/lib/styles/reset.css";
-import "../src/lib/components/Typography/Typography.module.css";
+import "../src/lib/components/typography/Typography.module.css";
 
 const preview: Preview = {
   parameters: {
