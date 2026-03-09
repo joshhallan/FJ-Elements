@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# FJ-Elements
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional, cyberpunk-themed React component library built with TypeScript, CSS Modules, and Storybook. This library serves as the core UI engine for the [findjosh.dev](https://findjosh.dev) ecosystem.
 
-Currently, two official plugins are available:
+[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://elements.findjosh.dev)
+[![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](#)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**FJ-Elements** is a modular component library designed for high-performance, accessible, and themeable web applications. It implements a custom design system focused on "Cyber-Utility"—combining high-contrast aesthetics with strict architectural patterns.
 
-## Expanding the ESLint configuration
+### Why this exists:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Consistency:** Centralized design tokens for colors, spacing, and glow effects.
+- **Architecture:** Separation of concerns using the Provider/Hook pattern for complex states (like Toasts).
+- **Performance:** Optimized for minimal Layout Shift (CLS) using specialized Skeleton loaders.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18+** & **TypeScript** (Strict Mode)
+- **CSS Modules** for encapsulated, collision-free styling
+- **Storybook 8** for component isolation and documentation
+- **GitHub Actions** for automated CI/CD and deployment
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Core Components & Status
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This library is organized using Atomic Design principles. Here is the current roadmap and completion status:
+
+| Category       | Component                  | Status      |
+| :------------- | :------------------------- | :---------- |
+| **Foundation** | Colours                    | ✅ Complete |
+| **Atoms**      | Button                     | ✅ Complete |
+| **Atoms**      | TextInput / TextArea       | ✅ Complete |
+| **Atoms**      | Checkbox / Radio           | ✅ Complete |
+| **Atoms**      | Toggle (Switch)            | ✅ Complete |
+| **Atoms**      | Select                     | ✅ Complete |
+| **Atoms**      | Badge / Tooltip            | ✅ Complete |
+| **Atoms**      | Divider / Spinner          | ✅ Complete |
+| **Molecules**  | Alert / Callout            | ✅ Complete |
+| **Molecules**  | RadioGroup                 | ✅ Complete |
+| **Organisms**  | Modal (Dialog)             | ✅ Complete |
+| **Organisms**  | Toast Notification         | ✅ Complete |
+| **Organisms**  | Navigation Bar             | ✅ Complete |
+| **Organisms**  | Footer                     | 🚧 Planned  |
+| **Layout**     | Grid / Container / Section | ✅ Complete |
+| **Utility**    | Skeleton                   | ✅ Complete |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+### Installation
+
+```bash
+git clone [https://github.com/joshhallan/FJ-Elements.git](https://github.com/joshhallan/FJ-Elements.git)
+cd FJ-Elements
+npm install
 ```
