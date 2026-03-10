@@ -27,12 +27,10 @@ const ColorSwatch = ({
           width: "80px",
           height: "40px",
           borderRadius: "4px",
-          // For glows, we use a base color so the shadow has something to 'emit' from
           backgroundColor: isGlow
             ? "rgba(255,255,255,0.2)"
             : `var(${variable})`,
           border: "1px solid rgba(255,255,255,0.2)",
-          // CRUCIAL: Since your variable has '0 0 15px...', we just use the variable
           boxShadow: `var(${variable})`,
         }}
       />
@@ -67,7 +65,7 @@ export const Palette = {
     <div
       style={{
         padding: "2rem",
-        background: "var(--color-bg, #0d0221)", // Using your actual BG variable
+        background: "var(--color-bg, #0d0221)",
         minHeight: "100vh",
         fontFamily: "var(--font-sans)",
       }}
@@ -120,9 +118,9 @@ export const Palette = {
       >
         Atmospherics (Glows)
       </h3>
-      {/* Updated to match your tokens.css naming */}
       <ColorSwatch name="Neon Glow Pink" variable="--glow-pink" />
       <ColorSwatch name="Neon Glow Cyan" variable="--glow-cyan" />
+      <ColorSwatch name="Neon Glow Accent" variable="--glow-accent" />
     </div>
   ),
 };
