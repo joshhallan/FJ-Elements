@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Alert, type AlertIntent } from "../alert/Alert";
+import { Alert, type AlertIntent } from "../Alert/Alert";
 import styles from "./Toast.module.css";
 
 export interface ToastProps {
