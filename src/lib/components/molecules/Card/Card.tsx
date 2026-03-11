@@ -21,7 +21,7 @@ export const Card = ({
   );
 };
 
-/* --- Compound Sub-Components --- */
+// Sub-components for Card
 
 const CardHeader = ({
   children,
