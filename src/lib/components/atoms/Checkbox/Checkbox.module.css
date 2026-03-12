@@ -16,8 +16,9 @@
   position: absolute;
   opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
+  height: 20px;
+  width: 20px;
+  z-index: 2;
 }
 
 .customCheck {
@@ -31,6 +32,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .inputContainer:hover .customCheck {
