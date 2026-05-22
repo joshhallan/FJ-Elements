@@ -9,3 +9,22 @@
   width: 100%;
   color: var(--color-textDefault);
 }
+
+.hide-on-desktop {
+  display: block; /* Visible by default on mobile */
+}
+
+.hide-on-mobile {
+  display: none; /* Hidden by default on mobile */
+}
+
+/* Desktop Breakpoint  */
+@media (min-width: 1024px) {
+  .hide-on-desktop {
+    display: none !important; /* Hidden on screens 1024px and up */
+  }
+
+  .hide-on-mobile {
+    display: block !important; /* Visible on screens 1024px and up */
+  }
+}

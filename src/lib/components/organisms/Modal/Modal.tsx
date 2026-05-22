@@ -39,7 +39,7 @@ export const Modal: React.FC<ModalProps> = ({
     <dialog ref={dialogRef} className={styles.modal} onCancel={handleCancel}>
       <div className={styles.container}>
         <header className={styles.header}>
-          <Typography as="h3" weight="bold" className={styles.title}>
+          <Typography as="h3" className={styles.title}>
             {title}
           </Typography>
           <button

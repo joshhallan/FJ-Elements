@@ -8,6 +8,7 @@ interface CellProps {
   medium?: number; // 0-12
   large?: number; // 0-12
   gap?: keyof typeof tokens.spacing;
+  className?: string;
 }
 
 export const Cell = ({
@@ -16,6 +17,7 @@ export const Cell = ({
   medium,
   large,
   gap = "md",
+  className = "",
 }: CellProps) => {
   const style = {
     "--w-sm": `${(small / 12) * 100}%`,
@@ -28,8 +30,10 @@ export const Cell = ({
     padding: `calc(${tokens.spacing[gap]} / 2)`,
   } as React.CSSProperties;
 
+  const combinedClasses = `${styles.cell} ${className}`.trim();
+
   return (
-    <div className={styles.cell} style={style}>
+    <div className={combinedClasses} style={style}>
       {children}
     </div>
   );

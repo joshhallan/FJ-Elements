@@ -10,7 +10,7 @@ export type ToastPosition =
   | "bottom-left"
   | "bottom-right";
 
-interface ToastContextType {
+export interface ToastContextType {
   addToast: (toast: Omit<ToastProps, "id" | "onClose">) => void;
   removeToast: (id: string) => void;
 }

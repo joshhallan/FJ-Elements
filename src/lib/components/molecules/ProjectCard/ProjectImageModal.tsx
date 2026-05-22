@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import styles from "./ProjectCard.module.css";
 
