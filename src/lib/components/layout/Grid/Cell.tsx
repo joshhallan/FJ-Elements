@@ -2,13 +2,14 @@ import React from "react";
 import { tokens } from "../../../styles/tokens";
 import styles from "./Grid.module.css";
 
-interface CellProps {
+interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   small?: number; // 0-12
   medium?: number; // 0-12
   large?: number; // 0-12
   gap?: keyof typeof tokens.spacing;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Cell = ({
@@ -18,8 +19,10 @@ export const Cell = ({
   large,
   gap = "md",
   className = "",
+  style: externalStyle = {},
+  ...props
 }: CellProps) => {
-  const style = {
+  const internalStyle = {
     "--w-sm": `${(small / 12) * 100}%`,
     "--w-md": medium ? `${(medium / 12) * 100}%` : `${(small / 12) * 100}%`,
     "--w-lg": large
@@ -31,9 +34,13 @@ export const Cell = ({
   } as React.CSSProperties;
 
   const combinedClasses = `${styles.cell} ${className}`.trim();
+  const combinedStyles = {
+    ...internalStyle,
+    ...externalStyle,
+  };
 
   return (
-    <div className={combinedClasses} style={style}>
+    <div className={combinedClasses} style={combinedStyles} {...props}>
       {children}
     </div>
   );
