@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { Typography } from "../../typography";
-import { ProjectImageModal } from "./ProjectImageModal";
 import styles from "./ProjectCard.module.css";
 import { Badge } from "../../atoms/Badge";
 
@@ -20,7 +19,7 @@ export interface Project {
 
 export interface ProjectCardProps {
   project: Project;
-  style?: "short" | "long";
+  variant?: "short" | "long";
   renderLink: (
     link: { href: string },
     className: string,
@@ -30,19 +29,15 @@ export interface ProjectCardProps {
 
 export const ProjectCard = ({
   project,
-  style = "short",
+  variant = "short",
   renderLink,
 }: ProjectCardProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const displayDescription =
-    style === "long" ? project.fullDescription : project.description;
+    variant === "long" ? project.fullDescription : project.description;
 
   return (
     <>
-      <div
-        className={`${styles.card} ${styles[style]}`}
-        onClick={() => setIsModalOpen(true)}
-      >
+      <div className={`${styles.card} ${styles[variant]}`}>
         <img
           src={project.image}
           alt={project.title}
@@ -68,7 +63,7 @@ export const ProjectCard = ({
 
           <Typography
             as="p"
-            className={`${styles.description} ${style === "short" ? styles.clamp : ""}`}
+            className={`${styles.description} ${variant === "short" ? styles.clamp : ""}`}
           >
             {displayDescription}
           </Typography>
@@ -108,13 +103,6 @@ export const ProjectCard = ({
           </div>
         </div>
       </div>
-
-      {isModalOpen && (
-        <ProjectImageModal
-          project={project}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
     </>
   );
 };

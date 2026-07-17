@@ -1,5 +1,4 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Alert } from "./Alert";
 
 const meta: Meta<typeof Alert> = {
@@ -10,9 +9,8 @@ const meta: Meta<typeof Alert> = {
     (Story) => (
       <div
         style={{
-          backgroundColor: "#0d0221",
+          maxWidth: "600px",
           padding: "3rem",
-          minHeight: "100vh",
         }}
       >
         <Story />
@@ -28,14 +26,17 @@ const meta: Meta<typeof Alert> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Alert>;
+
+const message =
+  "This is an example alert message showing how feedback content is displayed.";
 
 export const Success: Story = {
   args: {
     intent: "success",
     title: "Success message",
-    children:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nam velit, iure aut saepe molestiae ipsum repudiandae consectetur cum autem sapiente iusto eos architecto cumque temporibus porro omnis quidem odit!",
+    children: message,
   },
 };
 
@@ -43,8 +44,7 @@ export const ErrorState: Story = {
   args: {
     intent: "error",
     title: "Error message",
-    children:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nam velit, iure aut saepe molestiae ipsum repudiandae consectetur cum autem sapiente iusto eos architecto cumque temporibus porro omnis quidem odit!",
+    children: message,
     onDismiss: () => console.log("Alert dismissed"),
   },
 };
@@ -52,8 +52,15 @@ export const ErrorState: Story = {
 export const Info: Story = {
   args: {
     intent: "info",
-    title: "Info message",
-    children:
-      "lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nam velit, iure aut saepe molestiae ipsum repudiandae consectetur cum autem sapiente iusto eos architecto cumque temporibus porro omnis quidem odit!",
+    title: "Information",
+    children: message,
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    intent: "warning",
+    title: "Warning",
+    children: message,
   },
 };

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { useId, useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import { Typography } from "../../typography";
 import styles from "./Accordion.module.css";
 
@@ -20,29 +20,41 @@ export const Accordion = ({
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
+  const contentId = useId();
+
   return (
-    <div className={`${styles.accordionWrapper} ${className}`}>
+    <div className={`${styles.accordionWrapper} ${className}`.trim()}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        type="button"
         className={styles.toggle}
         aria-expanded={isOpen}
+        aria-controls={contentId}
+        onClick={() => setIsOpen((open) => !open)}
       >
         <div className={styles.info}>
           <Typography as="h4" className={styles.title}>
             {title}
           </Typography>
+
           {subtitle && (
             <Typography as="small" className={styles.subtitle}>
               {subtitle}
             </Typography>
           )}
         </div>
-        <span className={styles.chevron}>
-          {isOpen ? <FaChevronUp /> : <FaChevronDown />}
-        </span>
+
+        <FaChevronDown
+          className={`${styles.chevron} ${
+            isOpen ? styles.chevronOpen : ""
+          }`.trim()}
+          aria-hidden="true"
+        />
       </button>
 
-      <div className={`${styles.content} ${isOpen ? styles.open : ""}`}>
+      <div
+        id={contentId}
+        className={`${styles.content} ${isOpen ? styles.open : ""}`.trim()}
+      >
         <div className={styles.innerContent}>{children}</div>
       </div>
     </div>

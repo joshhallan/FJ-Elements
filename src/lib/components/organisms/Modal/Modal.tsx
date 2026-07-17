@@ -21,27 +21,45 @@ export const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     const dialog = dialogRef.current;
+
     if (!dialog) return;
 
-    if (isOpen) {
+    if (isOpen && !dialog.open) {
       dialog.showModal();
-    } else {
+    }
+
+    if (!isOpen && dialog.open) {
       dialog.close();
     }
   }, [isOpen]);
 
-  const handleCancel = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleCancel = (event: React.SyntheticEvent) => {
+    event.preventDefault();
     onClose();
   };
 
+  const handleBackdropClick = (event: React.MouseEvent<HTMLDialogElement>) => {
+    if (event.target === dialogRef.current) {
+      onClose();
+    }
+  };
+
   return (
-    <dialog ref={dialogRef} className={styles.modal} onCancel={handleCancel}>
-      <div className={styles.container}>
+    <dialog
+      ref={dialogRef}
+      className={styles.modal}
+      onCancel={handleCancel}
+      onClick={handleBackdropClick}
+    >
+      <div
+        className={styles.container}
+        onClick={(event) => event.stopPropagation()}
+      >
         <header className={styles.header}>
           <Typography as="h3" className={styles.title}>
             {title}
           </Typography>
+
           <button
             onClick={onClose}
             className={styles.closeBtn}

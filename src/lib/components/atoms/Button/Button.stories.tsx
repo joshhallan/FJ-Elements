@@ -5,16 +5,21 @@ const meta: Meta<typeof Button> = {
   title: "FJ-Elements/Atoms/Button",
   component: Button,
   tags: ["autodocs"],
+
   argTypes: {
     variant: {
       control: "select",
       options: ["primary", "secondary"],
     },
-    href: { control: "text" },
+
+    disabled: {
+      control: "boolean",
+    },
   },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
@@ -31,19 +36,24 @@ export const Secondary: Story = {
   },
 };
 
-export const AsLink: Story = {
+export const Disabled: Story = {
   args: {
-    variant: "primary",
-    children: "Download CV",
-    href: "#",
-    download: "test_CV.pdf",
+    children: "Disabled",
+    disabled: true,
   },
 };
 
 export const Comparison: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1.5rem",
+        alignItems: "center",
+      }}
+    >
       <Button variant="primary">Primary Button</Button>
+
       <Button variant="secondary">Secondary Button</Button>
     </div>
   ),

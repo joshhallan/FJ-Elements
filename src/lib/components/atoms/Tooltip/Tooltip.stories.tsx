@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tooltip } from "./Tooltip";
 import { Button } from "../Button/Button";
 
@@ -41,5 +41,13 @@ export const Right: Story = {
     content: "More information",
     position: "right",
     children: <span style={{ color: "white" }}>Check Status</span>,
+  },
+};
+
+export const KeyboardAccessible: Story = {
+  args: {
+    content: "This tooltip appears when focused",
+    position: "top",
+    children: <button>Focus me</button>,
   },
 };

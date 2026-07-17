@@ -1,0 +1,15 @@
+.cell {
+  grid-column: var(--col-sm);
+}
+
+@media (min-width: 768px) {
+  .cell {
+    grid-column: var(--col-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cell {
+    grid-column: var(--col-lg);
+  }
+}

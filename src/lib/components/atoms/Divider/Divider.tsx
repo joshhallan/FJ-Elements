@@ -5,15 +5,19 @@ export interface DividerProps {
   className?: string;
 }
 
+const variantClasses = {
+  primary: styles["divider--primary"],
+  secondary: styles["divider--secondary"],
+  accent: styles["divider--accent"],
+};
+
 export const Divider = ({
   variant = "primary",
   className = "",
 }: DividerProps) => {
-  const variantClass = styles[`divider--${variant}`];
-
   return (
     <hr
-      className={`${styles.divider} ${variantClass} ${className}`}
+      className={`${styles.divider} ${variantClasses[variant]} ${className}`}
       aria-hidden="true"
     />
   );

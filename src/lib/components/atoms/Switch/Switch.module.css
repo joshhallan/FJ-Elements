@@ -1,70 +1,142 @@
 .wrapper {
   display: flex;
+
   flex-direction: column;
-  gap: 4px;
+
+  gap: var(--spacing-xs);
 }
 
 .container {
   display: flex;
+
   align-items: center;
+
+  gap: var(--spacing-sm);
+
   cursor: pointer;
-  gap: 12px;
+
   user-select: none;
 }
 
 .hiddenInput {
   position: absolute;
+
+  width: 1px;
+  height: 1px;
+
   opacity: 0;
-  width: 0;
-  height: 0;
 }
 
-/* The Track */
+/* ==========================================================
+   Track
+========================================================== */
+
 .track {
+  position: relative;
+
   width: 44px;
   height: 22px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--color-borderLight);
+
+  flex-shrink: 0;
+
+  background-color: var(--color-control-background);
+
+  border: 1px solid var(--color-control-border);
+
   border-radius: var(--radius-full);
-  position: relative;
-  transition: var(--transition-base);
+
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
-/* The Sliding Thumb */
 .thumb {
   position: absolute;
+
   top: 2px;
   left: 2px;
+
   width: 16px;
   height: 16px;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  transition: var(--transition-base);
+
+  background-color: var(--color-text-primary);
+
+  border-radius: var(--radius-full);
+
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base);
 }
 
-/* Checked States */
+/* ==========================================================
+   Checked
+========================================================== */
+
 .hiddenInput:checked + .track {
-  background-color: rgba(48, 192, 183, 0.2);
-  border-color: var(--color-secondary);
-  box-shadow: var(--glow-cyan);
+  background-color: color-mix(
+    in srgb,
+    var(--color-action-secondary),
+    transparent 75%
+  );
+
+  border-color: var(--color-action-secondary);
+
+  box-shadow: var(--shadow-glow-secondary);
 }
 
 .hiddenInput:checked + .track .thumb {
   transform: translateX(22px);
-  background-color: var(--color-secondary);
+
+  background-color: var(--color-action-secondary);
 }
 
-/* Focus State for Keyboard Nav */
-.hiddenInput:focus-visible + .track {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
+/* ==========================================================
+   Hover
+========================================================== */
+
+.container:hover .track {
+  border-color: var(--color-border-hover);
 }
+
+/* ==========================================================
+   Focus
+========================================================== */
+
+.hiddenInput:focus-visible + .track {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ==========================================================
+   Disabled
+========================================================== */
+
+.hiddenInput:disabled + .track {
+  opacity: 0.5;
+}
+
+.hiddenInput:disabled ~ .label {
+  opacity: 0.5;
+}
+
+.container:has(.hiddenInput:disabled) {
+  cursor: not-allowed;
+}
+
+/* ==========================================================
+   Label
+========================================================== */
 
 .label {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
+/* ==========================================================
+   Error
+========================================================== */
+
 .errorText {
-  color: var(--color-primary);
-  margin-top: 4px;
+  color: var(--color-error);
 }

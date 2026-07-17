@@ -1,8 +1,9 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { ToastProvider } from "./ToastProvider";
 import { useToast } from "./UseToast";
-import type { ToastPosition } from "./ToastProvider";
+import type { ToastPosition } from "./ToastContext";
+import { Button } from "../../atoms/Button/Button";
 
 const ToastTrigger = ({ position }: { position: ToastPosition }) => {
   const { addToast } = useToast();
@@ -18,18 +19,18 @@ const ToastTrigger = ({ position }: { position: ToastPosition }) => {
 
   return (
     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-      <button className="fj-demo-btn" onClick={() => handleTrigger("success")}>
+      <Button variant="primary" onClick={() => handleTrigger("success")}>
         Success
-      </button>
-      <button className="fj-demo-btn" onClick={() => handleTrigger("error")}>
+      </Button>
+      <Button variant="primary" onClick={() => handleTrigger("error")}>
         Error
-      </button>
-      <button className="fj-demo-btn" onClick={() => handleTrigger("warning")}>
+      </Button>
+      <Button variant="primary" onClick={() => handleTrigger("warning")}>
         Warning
-      </button>
-      <button className="fj-demo-btn" onClick={() => handleTrigger("info")}>
+      </Button>
+      <Button variant="primary" onClick={() => handleTrigger("info")}>
         Info
-      </button>
+      </Button>
 
       <style>{`
         .fj-demo-btn {
@@ -114,7 +115,8 @@ export const AllPositionsDemo: StoryObj = {
                 "bottom-right",
               ] as ToastPosition[]
             ).map((p) => (
-              <button
+              <Button
+                variant="secondary"
                 key={p}
                 onClick={() => setCurrentPos(p)}
                 style={{
@@ -124,7 +126,7 @@ export const AllPositionsDemo: StoryObj = {
                 }}
               >
                 {p}
-              </button>
+              </Button>
             ))}
           </div>
           <ToastTrigger position={currentPos} />

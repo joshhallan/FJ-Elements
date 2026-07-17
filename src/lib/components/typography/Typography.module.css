@@ -1,60 +1,120 @@
 .base {
   margin: 0;
-  line-height: var(--line-height-relaxed);
   color: inherit;
   font-family: var(--font-sans);
+  line-height: var(--line-height-relaxed);
 }
+
+/* ==========================================================
+   Heading Elements
+========================================================== */
 
 .h1,
 .h2,
 .h3,
-.h4 {
+.h4,
+.h5,
+.h6 {
   font-family: var(--font-mono);
-  font-weight: 900;
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
-  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
+/* ==========================================================
+   Typography Scale
+========================================================== */
+
 .h1 {
-  font-size: var(--size-h1);
-  color: var(--color-primary);
+  font-size: var(--font-size-h1);
 }
+
 .h2 {
-  font-size: var(--size-h2);
-  color: var(--color-secondary);
+  font-size: var(--font-size-h2);
 }
+
 .h3 {
-  font-size: var(--size-h3);
-  color: var(--color-accent);
+  font-size: var(--font-size-h3);
 }
+
 .h4 {
-  font-size: var(--size-h4);
+  font-size: var(--font-size-h4);
 }
+
+.h5 {
+  font-size: 1.25rem;
+}
+
+.h6 {
+  font-size: 1rem;
+}
+
 .p {
-  font-size: var(--size-body);
+  font-size: var(--font-size-body);
 }
+
 .small {
-  font-size: var(--size-small);
-  color: var(--color-muted);
+  font-size: var(--font-size-small);
 }
 
-/* Modifiers */
+/* ==========================================================
+   Weight modifiers
+========================================================== */
+
+.weightRegular {
+  font-weight: var(--font-weight-regular);
+}
+
+.weightMedium {
+  font-weight: var(--font-weight-medium);
+}
+
+.weightSemibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.weightBold {
+  font-weight: var(--font-weight-bold);
+}
+
+.weightExtrabold {
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* ==========================================================
+   Alignment
+========================================================== */
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+/* ==========================================================
+   Effects
+========================================================== */
+
 .glow {
-  text-shadow: var(--glow-pink);
-}
-
-.h1.glow,
-.h1 {
-  text-shadow: 0 0 15px rgba(238, 34, 125, 0.4);
+  text-shadow: var(--shadow-glow-primary);
 }
 
 .gradient {
   background: linear-gradient(
-    to right,
-    var(--color-primary),
-    var(--color-accent)
+    90deg,
+    var(--color-decoration-primary),
+    var(--color-decoration-accent)
   );
-  -webkit-background-clip: text;
+
   background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
   -webkit-text-fill-color: transparent;
 }

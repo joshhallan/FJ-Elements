@@ -1,37 +1,93 @@
 :root {
-  /* 🎨 Colors */
-  --color-bg: #0d0221;
-  --color-surface: #1a0536;
-  --color-primary: #ee227d;
-  --color-secondary: #30c0b7;
-  --color-accent: #fd8083;
-  --color-muted: #498099;
-  --color-white: #ffffff;
-  --color-textMuted: rgba(255, 255, 255, 0.8);
-  --color-textDefault: rgba(255, 255, 255, 0.8);
-  --color-borderLight: rgba(255, 255, 255, 0.05);
+  /* ==========================================================
+     Primitive Colours
+     Raw palette values. Themes can override these.
+  ========================================================== */
 
-  /* 🖋️ Typography: Fonts */
+  --purple-900: #0d0221;
+  --purple-800: #1a0536;
+
+  --pink-500: #ee227d;
+  --cyan-500: #30c0b7;
+  --coral-500: #fd8083;
+  --blue-500: #498099;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --red-500: #ff4d4d;
+  --green-500: #22c55e;
+
+  /* ==========================================================
+     Semantic Colours
+     Components should consume these.
+  ========================================================== */
+
+  /* Backgrounds */
+  --color-background: var(--purple-900);
+  --color-surface: var(--purple-800);
+
+  /* Text */
+  --color-text-primary: var(--white);
+  --color-text-secondary: rgba(255, 255, 255, 0.8);
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+
+  /* Borders */
+  --color-border-default: rgba(255, 255, 255, 0.05);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+
+  /* Interactive */
+  --color-action-primary: var(--pink-500);
+  --color-action-secondary: var(--cyan-500);
+  --color-focus: var(--cyan-500);
+
+  /* Feedback */
+  --color-error: var(--red-500);
+  --color-success: var(--green-500);
+
+  /* Decorative */
+  --color-decoration-primary: var(--pink-500);
+  --color-decoration-secondary: var(--cyan-500);
+  --color-decoration-accent: var(--coral-500);
+
+  /* Controls */
+  --color-control-border: rgba(255, 255, 255, 0.35);
+  --color-control-background: rgba(255, 255, 255, 0.05);
+  --color-control-hover-border: rgba(255, 255, 255, 0.6);
+
+  /* ==========================================================
+     Typography
+  ========================================================== */
+
   --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
-  --size-h1: clamp(2.5rem, 8vw, 4.5rem);
-  --size-h2: clamp(2rem, 6vw, 3rem);
-  --size-h3: clamp(1.5rem, 4vw, 2.25rem);
-  --size-h4: clamp(1.25rem, 3vw, 1.75rem);
-  --size-body: clamp(1rem, 1vw, 1.125rem);
-  --size-small: 0.875rem;
+  --font-size-h1: clamp(2.5rem, 8vw, 4.5rem);
+  --font-size-h2: clamp(2rem, 6vw, 3rem);
+  --font-size-h3: clamp(1.5rem, 4vw, 2.25rem);
+  --font-size-h4: clamp(1.25rem, 3vw, 1.75rem);
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1rem;
 
-  /* 🖋️ Typography: Weights & Spacing */
-  --weight-normal: 400;
-  --weight-bold: 700;
-  --weight-black: 900;
+  --font-size-body: clamp(1rem, 1vw, 1.125rem);
+  --font-size-small: 0.875rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
   --line-height-tight: 1.1;
   --line-height-relaxed: 1.6;
-  --letter-spacing-tight: -0.02em;
-  --letter-spacing-widest: 0.05em;
 
-  /* 📏 Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.05em;
+
+  /* ==========================================================
+     Spacing
+  ========================================================== */
+
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -39,20 +95,45 @@
   --spacing-xl: 3rem;
   --spacing-xxl: 4rem;
 
-  /* 📐 Layout */
+  /* ==========================================================
+     Layout
+  ========================================================== */
+
   --layout-container: 1200px;
   --layout-content-max-width: 70ch;
-  --layout-container-padding: 1.5rem;
+  --layout-container-padding: clamp(1rem, 4vw, 3rem);
 
-  /* 🔘 Radius */
+  /* ==========================================================
+     Border Radius
+  ========================================================== */
+
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 10px;
   --radius-full: 9999px;
 
-  /* ✨ Effects */
-  --glow-pink: 0 0 15px rgba(238, 34, 125, 0.5);
-  --glow-cyan: 0 0 15px rgba(48, 192, 183, 0.4);
-  --glow-accent: 0 0 20px rgba(253, 128, 131, 0.6);
-  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* ==========================================================
+     Focus
+     Shared accessibility behaviour
+  ========================================================== */
+
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ==========================================================
+     Motion
+  ========================================================== */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ==========================================================
+     Effects
+  ========================================================== */
+
+  --shadow-glow-primary: 0 0 15px rgba(238, 34, 125, 0.5);
+
+  --shadow-glow-secondary: 0 0 15px rgba(48, 192, 183, 0.4);
+
+  --shadow-glow-accent: 0 0 20px rgba(253, 128, 131, 0.6);
 }

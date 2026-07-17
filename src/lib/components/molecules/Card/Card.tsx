@@ -1,51 +1,47 @@
 import React from "react";
 import styles from "./Card.module.css";
 
-interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   variant?: "cyan" | "pink";
-  className?: string;
 }
 
 export const Card = ({
   children,
   variant = "cyan",
   className = "",
+  ...props
 }: CardProps) => {
-  const variantClass = styles[`card--${variant}`];
-
   return (
-    <div className={`${styles.card} ${variantClass} ${className}`}>
+    <div
+      {...props}
+      className={`${styles.card} ${styles[`card--${variant}`]} ${className}`.trim()}
+    >
       {children}
     </div>
   );
 };
 
-// Sub-components for Card
+/* ==========================================================
+   Sub Components
+========================================================== */
 
-const CardHeader = ({
-  children,
-  className = "",
-}: {
+interface CardSectionProps {
   children: React.ReactNode;
   className?: string;
-}) => <div className={`${styles.cardHeader} ${className}`}>{children}</div>;
+}
 
-const CardBody = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => <div className={`${styles.cardBody} ${className}`}>{children}</div>;
+const CardHeader = ({ children, className = "" }: CardSectionProps) => (
+  <div className={`${styles.cardHeader} ${className}`}>{children}</div>
+);
 
-const CardFooter = ({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => <div className={`${styles.cardFooter} ${className}`}>{children}</div>;
+const CardBody = ({ children, className = "" }: CardSectionProps) => (
+  <div className={`${styles.cardBody} ${className}`}>{children}</div>
+);
+
+const CardFooter = ({ children, className = "" }: CardSectionProps) => (
+  <div className={`${styles.cardFooter} ${className}`}>{children}</div>
+);
 
 Card.Header = CardHeader;
 Card.Body = CardBody;

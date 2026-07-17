@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Divider } from "./Divider";
 
 const meta = {
@@ -8,12 +8,15 @@ const meta = {
   argTypes: {
     variant: {
       options: ["primary", "secondary", "accent"],
-      control: { type: "radio" },
+      control: {
+        type: "radio",
+      },
     },
   },
 } satisfies Meta<typeof Divider>;
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
@@ -32,4 +35,16 @@ export const Accent: Story = {
   args: {
     variant: "accent",
   },
+};
+
+export const Comparison: Story = {
+  render: () => (
+    <div>
+      <Divider variant="primary" />
+
+      <Divider variant="secondary" />
+
+      <Divider variant="accent" />
+    </div>
+  ),
 };

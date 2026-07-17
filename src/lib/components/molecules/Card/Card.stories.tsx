@@ -1,7 +1,7 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Card } from "./Card";
-import { tokens } from "../../../styles/tokens";
+import { Typography } from "../../typography/Typography";
 
 const meta: Meta<typeof Card> = {
   title: "FJ-Elements/Molecules/Cards/Generic Card",
@@ -32,23 +32,15 @@ export const FullExample: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Header>
-        <h3
-          style={{
-            margin: 0,
-            color: "inherit",
-            fontFamily: tokens.typography.font.mono,
-          }}
-        >
-          Card header copy
-        </h3>
+        <Typography as="h4">Card header copy</Typography>
       </Card.Header>
       <Card.Body>
-        <p style={{ margin: 0, opacity: 0.8 }}>
+        <Typography as="p">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus nam
           velit, iure aut saepe molestiae ipsum repudiandae consectetur cum
           autem sapiente iusto eos architecto cumque temporibus porro omnis
           quidem odit!
-        </p>
+        </Typography>
       </Card.Body>
       <Card.Footer>
         <div style={{ fontSize: "0.8rem", color: "var(--color-secondary)" }}>

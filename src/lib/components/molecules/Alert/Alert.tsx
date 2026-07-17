@@ -6,6 +6,7 @@ import {
   FaExclamationCircle,
   FaTimes,
 } from "react-icons/fa";
+import { Typography } from "../../typography";
 import styles from "./Alert.module.css";
 
 export type AlertIntent = "info" | "success" | "warning" | "error";
@@ -25,27 +26,38 @@ const iconMap = {
   error: <FaExclamationCircle aria-hidden="true" />,
 };
 
-export const Alert: React.FC<AlertProps> = ({
+export const Alert = ({
   intent = "info",
   title,
   children,
   onDismiss,
   className = "",
-}) => {
+}: AlertProps) => {
   const role = intent === "error" || intent === "warning" ? "alert" : "status";
-  const containerClasses = `${styles.alert} ${styles[intent]} ${className}`;
 
   return (
-    <div className={containerClasses} role={role} aria-atomic="true">
+    <div
+      className={`${styles.alert} ${styles[intent]} ${className}`.trim()}
+      role={role}
+      aria-atomic="true"
+    >
       <div className={styles.icon}>{iconMap[intent]}</div>
 
       <div className={styles.content}>
-        {title && <h4 className={styles.title}>{title}</h4>}
-        <div className={styles.message}>{children}</div>
+        {title && (
+          <Typography as="h4" className={styles.title}>
+            {title}
+          </Typography>
+        )}
+
+        <Typography as="p" className={styles.message}>
+          {children}
+        </Typography>
       </div>
 
       {onDismiss && (
         <button
+          type="button"
           className={styles.closeButton}
           onClick={onDismiss}
           aria-label="Dismiss alert"

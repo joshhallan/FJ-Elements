@@ -1,61 +1,96 @@
 .wrapper {
   display: flex;
+
   flex-direction: column;
+
   gap: var(--spacing-xs);
+
   width: 100%;
 }
 
 .label {
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .selectContainer {
   position: relative;
+
   width: 100%;
 }
 
 .select {
   width: 100%;
-  padding: 12px 16px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-borderLight);
+
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  padding-right: 2.5rem;
+
+  background-color: var(--color-control-background);
+
+  border: 1px solid var(--color-control-border);
+
   border-radius: var(--radius-sm);
-  color: var(--color-white);
+
+  color: var(--color-text-primary);
+
   font-family: var(--font-sans);
-  font-size: var(--size-body);
+
+  font-size: var(--font-size-body);
+
   cursor: pointer;
+
   appearance: none;
-  transition: var(--transition-base);
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
-.select:focus {
-  outline: none;
-  border-color: var(--color-secondary);
-  box-shadow: var(--glow-cyan);
+.select:hover {
+  border-color: var(--color-border-hover);
+}
+
+.select:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+
+  outline-offset: var(--focus-ring-offset);
+
+  border-color: var(--color-focus);
 }
 
 .select:disabled {
   opacity: 0.5;
+
   cursor: not-allowed;
 }
 
-/* The custom Arrow */
 .chevron {
   position: absolute;
-  right: 16px;
+
+  right: var(--spacing-md);
+
   top: 50%;
+
   transform: translateY(-50%);
-  color: var(--color-secondary);
+
+  color: var(--color-action-secondary);
+
   pointer-events: none;
-  font-size: 0.8rem;
+
+  display: flex;
+
+  align-items: center;
 }
 
 .option {
-  background-color: var(--color-bg);
-  color: var(--color-white);
+  background-color: var(--color-background);
+
+  color: var(--color-text-primary);
 }
 
 .errorText {
-  color: var(--color-primary);
-  margin-top: 4px;
+  color: var(--color-error);
+
+  margin-top: var(--spacing-xs);
 }

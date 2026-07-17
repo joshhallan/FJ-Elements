@@ -1,59 +1,75 @@
 .iconButton {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+
+  aspect-ratio: 1 / 1;
+
+  padding: 0;
+
   border: 1px solid transparent;
   border-radius: var(--radius-full);
+
   background: transparent;
-  transition: all 0.3s ease;
-  padding: 0;
-  aspect-ratio: 1 / 1;
-  color: var(--color-white);
+
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+
   outline: none;
 }
 
+.iconButton:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
 /* Sizes */
+
 .sm {
   width: 32px;
-  font-size: 0.9rem;
 }
+
 .md {
   width: 42px;
-  font-size: 1.1rem;
 }
+
 .lg {
   width: 52px;
-  font-size: 1.4rem;
 }
 
 /* Variants */
+
 .ghost {
   background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--color-white);
+  border-color: var(--color-border-default);
 }
 
 .primary:hover {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  box-shadow: var(--effects-glowPink);
-  background: color-mix(in srgb, var(--color-primary), transparent 90%);
+  color: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+
+  background: color-mix(in srgb, var(--color-action-primary), transparent 90%);
+
+  box-shadow: var(--shadow-glow-primary);
 }
 
 .secondary:hover {
-  color: var(--color-secondary);
-  border-color: var(--color-secondary);
-  box-shadow: var(--effects-glowCyan);
-  background: color-mix(in srgb, var(--color-secondary), transparent 90%);
-}
+  color: var(--color-action-secondary);
+  border-color: var(--color-action-secondary);
 
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: color-mix(
+    in srgb,
+    var(--color-action-secondary),
+    transparent 90%
+  );
+
+  box-shadow: var(--shadow-glow-secondary);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Select } from "./Select";
 
 const mockOptions = [
@@ -9,7 +9,7 @@ const mockOptions = [
 ];
 
 const meta: Meta<typeof Select> = {
-  title: "FJ-Elements/Atoms/Select",
+  title: "FJ-Elements/Forms/Select",
   component: Select,
   tags: ["autodocs"],
   decorators: [

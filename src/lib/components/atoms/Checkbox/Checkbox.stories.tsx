@@ -1,66 +1,56 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox } from "./Checkbox";
-import { Container } from "../../layout/Grid/";
-import { Typography } from "../../typography";
 
 const meta: Meta<typeof Checkbox> = {
   title: "FJ-Elements/Forms/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
-  decorators: [
-    (Story) => (
-      <Container>
-        <div style={{ marginTop: "2rem", maxWidth: "400px" }}>
-          <Story />
-        </div>
-      </Container>
-    ),
-  ],
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Checkbox>;
 
-export const Basic: Story = {
+export const Default: Story = {
   args: {
-    id: "remember-me",
-    label: "Remember me on this device",
+    id: "remember",
+    label: "Remember me",
   },
 };
 
-export const CheckedByDefault: Story = {
+export const Checked: Story = {
   args: {
     id: "newsletter",
-    label: "Subscribe to the grid newsletter",
+    label: "Subscribe to newsletter",
     defaultChecked: true,
   },
 };
 
-export const RequiredWithError: Story = {
+export const Error: Story = {
   args: {
     id: "terms",
-    label: "I accept the Terms and Conditions",
+    label: "Accept terms and conditions",
     required: true,
-    error: "You must accept the terms to continue.",
+    error: "You must accept the terms before continuing.",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    id: "disabled-check",
-    label: "Admin Access (Restricted)",
+    id: "disabled",
+    label: "Restricted option",
     disabled: true,
   },
 };
 
-export const CheckboxList: Story = {
+export const Group: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Typography as="h4">System Preferences</Typography>
-      <Checkbox id="pref-1" label="Enable Dark Mode" defaultChecked />
-      <Checkbox id="pref-2" label="Hardware Acceleration" />
-      <Checkbox id="pref-3" label="Automatic Updates" defaultChecked />
+      <Checkbox id="updates" label="Receive updates" defaultChecked />
+
+      <Checkbox id="marketing" label="Receive marketing emails" />
+
+      <Checkbox id="security" label="Receive security alerts" defaultChecked />
     </div>
   ),
 };

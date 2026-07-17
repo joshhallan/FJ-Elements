@@ -2,24 +2,37 @@
   width: 100%;
 }
 
-.accordionWrapper + .accordionWrapper {
-  border-top: 1px solid var(--color-borderLight);
-}
-
 .toggle {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: var(--spacing-md) 0;
+
   background: transparent;
   border: none;
+  border-bottom: 1px solid rgba(48, 192, 183, 0.25);
+
   cursor: pointer;
-  transition: opacity 0.2s ease;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.toggle:hover {
+  background: rgba(48, 192, 183, 0.03);
 }
 
 .toggle:hover .title {
-  color: var(--color-secondary);
+  color: var(--color-action-secondary);
+}
+
+.toggle:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--radius-sm);
 }
 
 .info {
@@ -30,32 +43,48 @@
 }
 
 .title {
-  color: var(--color-white);
-  transition: color 0.2s ease;
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
 }
 
 .subtitle {
-  color: var(--color-textMuted);
   margin-top: var(--spacing-xs);
+
+  color: var(--color-text-muted);
+
   text-transform: uppercase;
-  letter-spacing: var(--letterSpacing-widest);
-  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing-wide);
+
+  font-size: var(--font-size-small);
 }
 
 .chevron {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--color-text-muted);
+
   font-size: 0.8rem;
-  transition: transform 0.3s ease;
+
+  transition:
+    transform var(--transition-base),
+    color var(--transition-fast);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
 }
 
 .content {
   max-height: 0;
-  opacity: 0;
+
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  opacity: 0;
+
+  transition:
+    max-height var(--transition-base),
+    opacity var(--transition-base);
 }
 
-.content.open {
+.open {
   max-height: 2000px;
   opacity: 1;
 }
@@ -65,17 +94,20 @@
 }
 
 .innerContent ul {
-  list-style: none;
-  padding: 0;
   margin: var(--spacing-md) 0;
+  padding: 0;
+
+  list-style: none;
 }
 
 .innerContent li {
-  color: var(--color-textMuted);
-  margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-sm);
-  font-size: 0.95rem;
-  line-height: 1.5;
+
+  margin-bottom: var(--spacing-sm);
+
+  color: var(--color-text-muted);
+
+  line-height: var(--line-height-relaxed);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "../../typography/";
+import { Typography } from "../../typography";
 import styles from "./TextInput.module.css";
 
 export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -22,6 +22,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         <label htmlFor={id}>
           <Typography as="small" className={styles.label}>
             {label}
+
             {isRequired && (
               <span className={styles.requiredMarker} aria-hidden="true">
                 {" "}
@@ -31,21 +32,23 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           </Typography>
         </label>
 
-        <div className={styles.inputContainer}>
-          <input
-            ref={ref}
-            id={id}
-            className={`${styles.input} ${error ? styles.errorState : ""} ${className}`}
-            aria-invalid={!!error}
-            aria-describedby={error ? errorId : undefined}
-            {...props}
-          />
-        </div>
+        <input
+          ref={ref}
+          id={id}
+          className={`${styles.input} ${
+            error ? styles.errorState : ""
+          } ${className}`.trim()}
+          aria-invalid={error ? "true" : undefined}
+          aria-describedby={error ? errorId : undefined}
+          {...props}
+        />
 
         {error && (
-          <Typography as="small" className={styles.errorText}>
-            {error}
-          </Typography>
+          <span id={errorId}>
+            <Typography as="small" className={styles.errorText}>
+              {error}
+            </Typography>
+          </span>
         )}
       </div>
     );
