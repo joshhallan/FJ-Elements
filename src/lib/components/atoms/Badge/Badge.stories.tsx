@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
@@ -8,14 +8,41 @@ const meta: Meta<typeof Badge> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Badge>;
 
-export const AllVariants: Story = {
+export const Default: Story = {
+  args: {
+    children: "Primary",
+  },
+};
+
+export const Variants: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "1rem" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        alignItems: "center",
+      }}
+    >
       <Badge variant="primary">Primary</Badge>
+
       <Badge variant="secondary">Secondary</Badge>
+
       <Badge variant="muted">Muted</Badge>
     </div>
   ),
+};
+
+export const LongContent: Story = {
+  args: {
+    children: "Long content that might overflow the badge",
+  },
+};
+
+export const CustomContent: Story = {
+  args: {
+    children: "New",
+  },
 };

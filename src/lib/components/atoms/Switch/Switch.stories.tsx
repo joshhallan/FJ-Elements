@@ -1,9 +1,8 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Switch } from "./Switch";
 
 const meta: Meta<typeof Switch> = {
-  title: "FJ-Elements/Atoms/Switch",
+  title: "FJ-Elements/Forms/Switch",
   component: Switch,
   tags: ["autodocs"],
   decorators: [
@@ -11,7 +10,7 @@ const meta: Meta<typeof Switch> = {
       <div
         style={{
           padding: "3rem",
-          background: "var(--color-bg)",
+          background: "var(--color-background)",
           minHeight: "200px",
         }}
       >
@@ -22,35 +21,45 @@ const meta: Meta<typeof Switch> = {
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
   args: {
-    id: "toggle-1",
-    label: "Checkbox 1",
+    id: "notifications",
+    label: "Enable notifications",
   },
 };
 
 export const Checked: Story = {
   args: {
-    id: "toggle-2",
-    label: "Checkbox 2",
+    id: "dark-mode",
+    label: "Enable dark mode",
     defaultChecked: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    id: "toggle-3",
-    label: "Checkbox 3",
+    id: "disabled-switch",
+    label: "Enable account sync",
+    disabled: true,
+  },
+};
+
+export const DisabledChecked: Story = {
+  args: {
+    id: "disabled-checked-switch",
+    label: "Automatic updates",
+    defaultChecked: true,
     disabled: true,
   },
 };
 
 export const WithError: Story = {
   args: {
-    id: "toggle-4",
-    label: "Checkbox 4",
-    error: "Checkbox is required",
+    id: "required-switch",
+    label: "Accept terms and conditions",
+    error: "You must enable this option to continue.",
   },
 };

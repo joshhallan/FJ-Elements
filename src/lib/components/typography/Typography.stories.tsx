@@ -1,5 +1,5 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Typography } from "./Typography";
 
 const meta: Meta<typeof Typography> = {
@@ -59,4 +59,34 @@ export const GradientHeading: Story = {
     gradient: true,
     children: "Gradient Hero",
   },
+};
+
+export const Modifiers: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <Typography as="h1" glow>
+        Glowing Heading
+      </Typography>
+
+      <Typography as="h2" gradient>
+        Gradient Heading
+      </Typography>
+    </div>
+  ),
+};
+
+export const Weights: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Typography weight="regular">Regular</Typography>
+
+      <Typography weight="medium">Medium</Typography>
+
+      <Typography weight="semibold">Semi Bold</Typography>
+
+      <Typography weight="bold">Bold</Typography>
+
+      <Typography weight="extrabold">Extra Bold</Typography>
+    </div>
+  ),
 };

@@ -6,9 +6,6 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   label: string;
-  className?: string;
-  as?: "button" | "a";
-  href?: string;
 }
 
 export const IconButton = ({
@@ -17,20 +14,18 @@ export const IconButton = ({
   size = "md",
   label,
   className = "",
-  as = "button",
   ...props
 }: IconButtonProps) => {
-  const Component = as as any;
-  const combinedClassName = `${styles.iconButton} ${styles[variant]} ${styles[size]} ${className}`;
-
   return (
-    <Component
-      className={combinedClassName}
-      aria-label={label}
-      title={label}
+    <button
       {...props}
+      type="button"
+      className={`${styles.iconButton} ${styles[variant]} ${styles[size]} ${className}`.trim()}
+      aria-label={label}
     >
-      <span className={styles.iconWrapper}>{icon}</span>
-    </Component>
+      <span className={styles.iconWrapper} aria-hidden="true">
+        {icon}
+      </span>
+    </button>
   );
 };

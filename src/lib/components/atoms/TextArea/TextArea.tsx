@@ -30,6 +30,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         <label htmlFor={id}>
           <Typography as="small" className={styles.label}>
             {label}
+
             {isRequired && (
               <span className={styles.requiredMarker} aria-hidden="true">
                 {" "}
@@ -39,22 +40,24 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </Typography>
         </label>
 
-        <div className={styles.inputContainer}>
-          <textarea
-            ref={ref}
-            id={id}
-            rows={rows}
-            className={`${styles.textarea} ${error ? styles.errorState : ""} ${className}`}
-            aria-invalid={!!error}
-            aria-describedby={error ? errorId : undefined}
-            {...props}
-          />
-        </div>
+        <textarea
+          ref={ref}
+          id={id}
+          rows={rows}
+          className={`${styles.textarea} ${
+            error ? styles.errorState : ""
+          } ${className}`.trim()}
+          aria-invalid={error ? "true" : undefined}
+          aria-describedby={error ? errorId : undefined}
+          {...props}
+        />
 
         {error && (
-          <Typography as="small" className={styles.errorText}>
-            {error}
-          </Typography>
+          <div id={errorId}>
+            <Typography as="small" className={styles.errorText}>
+              {error}
+            </Typography>
+          </div>
         )}
       </div>
     );

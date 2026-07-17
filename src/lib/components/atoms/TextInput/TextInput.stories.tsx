@@ -1,6 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextInput } from "./TextInput";
-import { Container } from "../../layout/Grid/";
 
 const meta: Meta<typeof TextInput> = {
   title: "FJ-Elements/Forms/TextInput",
@@ -8,11 +7,15 @@ const meta: Meta<typeof TextInput> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <Container>
-        <div style={{ marginTop: "2rem", maxWidth: "400px" }}>
-          <Story />
-        </div>
-      </Container>
+      <div
+        style={{
+          padding: "2rem",
+          maxWidth: "400px",
+          background: "var(--color-background)",
+        }}
+      >
+        <Story />
+      </div>
     ),
   ],
 };

@@ -1,8 +1,6 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { GridX } from "./GridX";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Grid } from "./Grid";
 import { Cell } from "./Cell";
-import { Container } from "./Container";
 import styles from "./Grid.stories.module.css";
 
 const Placeholder = ({
@@ -13,57 +11,48 @@ const Placeholder = ({
   variant?: string;
 }) => <div className={`${styles.placeholder} ${styles[variant]}`}>{label}</div>;
 
-const meta: Meta<typeof GridX> = {
+const meta: Meta<typeof Grid> = {
   title: "FJ-Elements/Layout/Grid",
-  component: GridX,
+  component: Grid,
   tags: ["autodocs"],
   argTypes: {
     gap: {
       control: "select",
       options: ["xs", "sm", "md", "lg", "xl"],
     },
-    align: {
-      control: "select",
-      options: ["start", "center", "end", "justify", "spaced"],
-    },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof GridX>;
+type Story = StoryObj<typeof Grid>;
 
 export const BasicLayout: Story = {
   args: {
     gap: "md",
-    align: "start",
   },
   render: (args) => (
-    <Container>
-      <GridX {...args}>
-        <Cell small={12} medium={6} large={4}>
-          <Placeholder label="Column 1" variant="primary" />
-        </Cell>
-        <Cell small={12} medium={6} large={4}>
-          <Placeholder label="Column 2" variant="secondary" />
-        </Cell>
-        <Cell small={12} medium={12} large={4}>
-          <Placeholder label="Column 3" variant="accent" />
-        </Cell>
-      </GridX>
-    </Container>
+    <Grid {...args}>
+      <Cell small={12} medium={6} large={4}>
+        <Placeholder label="Column 1" variant="primary" />
+      </Cell>
+      <Cell small={12} medium={6} large={4}>
+        <Placeholder label="Column 2" variant="secondary" />
+      </Cell>
+      <Cell small={12} medium={12} large={4}>
+        <Placeholder label="Column 3" variant="accent" />
+      </Cell>
+    </Grid>
   ),
 };
 
 export const TwelveColumnGrid: Story = {
   render: () => (
-    <Container>
-      <GridX gap="xs">
-        {[...Array(12)].map((_, i) => (
-          <Cell key={i} small={1}>
-            <Placeholder label={`${i + 1}`} variant="muted" />
-          </Cell>
-        ))}
-      </GridX>
-    </Container>
+    <Grid gap="xs">
+      {[...Array(12)].map((_, i) => (
+        <Cell key={i} small={1}>
+          <Placeholder label={`${i + 1}`} variant="muted" />
+        </Cell>
+      ))}
+    </Grid>
   ),
 };

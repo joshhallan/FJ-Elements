@@ -1,19 +1,21 @@
 import React from "react";
 import styles from "./Badge.module.css";
 
-export interface BadgeProps {
-  children: React.ReactNode;
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: "primary" | "secondary" | "muted";
-  className?: string;
 }
 
 export const Badge = ({
   children,
   variant = "primary",
   className = "",
+  ...props
 }: BadgeProps) => {
   return (
-    <span className={`${styles.badge} ${styles[variant]} ${className}`}>
+    <span
+      className={`${styles.badge} ${styles[variant]} ${className}`}
+      {...props}
+    >
       {children}
     </span>
   );

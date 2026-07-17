@@ -1,78 +1,92 @@
 .fieldWrapper {
   display: flex;
+
   flex-direction: column;
-  gap: 4px;
+
+  gap: var(--spacing-xs);
+
   width: 100%;
 }
 
 .label {
-  color: var(--color-white);
-  opacity: 0.9;
   display: flex;
+
   align-items: center;
+
+  color: var(--color-text-primary);
 }
 
 .requiredMarker {
-  color: var(--color-primary);
-  margin-left: 2px;
-  font-size: 1.1em;
-  line-height: 0;
-}
+  margin-left: var(--spacing-xs);
 
-.inputContainer {
-  position: relative;
-  width: 100%;
+  color: var(--color-error);
+
+  font-size: 1.1em;
+
+  line-height: 0;
 }
 
 .input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--color-borderLight);
+
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  background: var(--color-control-background);
+
+  border: 1px solid var(--color-control-border);
+
   border-radius: var(--radius-sm);
-  padding: 0.75rem 1rem;
-  color: var(--color-white);
+
+  color: var(--color-text-primary);
+
   font-family: var(--font-sans);
-  font-size: var(--size-body);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+
+  font-size: var(--font-size-body);
+
   outline: none;
-  appearance: none;
+
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
 .input:hover:not(:focus):not(.errorState) {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-control-hover-border);
+
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Secondary (Cyan/Blue) for Focus Interaction */
 .input:focus {
   background: rgba(255, 255, 255, 0.07);
-  border-color: var(--color-secondary);
-  box-shadow: 0 0 10px var(--glow-secondary);
+
+  border-color: var(--color-focus);
+
+  box-shadow: var(--shadow-glow-secondary);
 }
 
-/* Error States */
 .input.errorState {
-  border-color: #ff4d4d;
-  background: rgba(255, 77, 77, 0.03);
+  border-color: var(--color-error);
+
+  background: color-mix(in srgb, var(--color-error), transparent 95%);
 }
 
 .input.errorState:focus {
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-error), transparent 70%);
 }
 
 .errorText {
-  color: #ff4d4d;
-  margin-top: 2px;
-  font-weight: 500;
   display: block;
+
+  margin-top: var(--spacing-xs);
+
+  color: var(--color-error);
 }
 
-/* Disabled State */
 .input:disabled {
-  opacity: 0.5;
+  opacity: var(--color-control-disabled-opacity);
+
   cursor: not-allowed;
+
   background: rgba(255, 255, 255, 0.01);
 }

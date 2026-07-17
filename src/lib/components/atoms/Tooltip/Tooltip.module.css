@@ -1,64 +1,102 @@
 .tooltipWrapper {
   position: relative;
-  display: inline-block;
+
+  display: inline-flex;
+
   cursor: help;
 }
 
 .tooltipBox {
   position: absolute;
-  background-color: var(--color-bg);
-  color: var(--color-white);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-secondary);
-  font-size: var(--size-small);
-  white-space: nowrap;
+
   z-index: 100;
+
+  padding: var(--spacing-xs) var(--spacing-sm);
+
+  background: var(--color-control-background);
+
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-control-border);
+
+  border-radius: var(--radius-sm);
+
+  font-size: var(--font-size-small);
+
+  white-space: nowrap;
+
   opacity: 0;
+
   visibility: hidden;
-  transition: var(--transition-base);
-  box-shadow: var(--glow-cyan);
+
   pointer-events: none;
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+
+  box-shadow: var(--shadow-glow-secondary);
 }
 
-/* Positioning Logic */
+/* Positions */
+
 .top {
   bottom: 125%;
+
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
+
+  transform: translateX(-50%) translateY(8px);
 }
 
 .bottom {
   top: 125%;
+
   left: 50%;
-  transform: translateX(-50%) translateY(-10px);
+
+  transform: translateX(-50%) translateY(-8px);
 }
 
 .left {
   right: 125%;
+
   top: 50%;
-  transform: translateY(-50%) translateX(10px);
+
+  transform: translateY(-50%) translateX(8px);
 }
 
 .right {
   left: 125%;
+
   top: 50%;
-  transform: translateY(-50%) translateX(-10px);
+
+  transform: translateY(-50%) translateX(-8px);
 }
 
-/* Hover States */
+/* Visible */
+
 .tooltipWrapper:hover .tooltipBox,
 .tooltipWrapper:focus-within .tooltipBox {
   opacity: 1;
+
   visibility: visible;
-  transform: translate(-50%, 0); /* Reset for Top/Bottom */
+
+  transform: translate(0, 0);
 }
 
-/* Specialized Reset for Left/Right Hover */
-.tooltipWrapper:hover .left,
-.tooltipWrapper:focus-within .left {
-  transform: translateY(-50%) translateX(0);
+/* Restore centred positions */
+
+.tooltipWrapper:hover .top .tooltipBox,
+.tooltipWrapper:focus-within .top {
+  transform: translateX(-50%) translateY(0);
 }
+
+.tooltipWrapper:hover .bottom,
+.tooltipWrapper:focus-within .bottom {
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltipWrapper:hover .left,
+.tooltipWrapper:focus-within .left,
 .tooltipWrapper:hover .right,
 .tooltipWrapper:focus-within .right {
   transform: translateY(-50%) translateX(0);

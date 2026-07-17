@@ -1,8 +1,7 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RadioGroup } from "./RadioGroup";
 import { Radio } from "../../atoms/Radio/Radio";
-import { Container } from "../../layout/Grid/";
 
 const meta: Meta<typeof RadioGroup> = {
   title: "FJ-Elements/Forms/RadioGroup",
@@ -10,11 +9,9 @@ const meta: Meta<typeof RadioGroup> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <Container>
-        <div style={{ marginTop: "2rem", maxWidth: "400px" }}>
-          <Story />
-        </div>
-      </Container>
+      <div style={{ marginTop: "2rem", maxWidth: "400px" }}>
+        <Story />
+      </div>
     ),
   ],
 };

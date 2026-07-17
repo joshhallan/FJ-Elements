@@ -2,44 +2,60 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 2rem;
-  font-family: var(--font-geist-mono, monospace);
-  font-weight: 700;
-  font-size: var(--fs-body, 1rem);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: var(--radius-md, 0.5rem);
-  transition: var(--transition-base);
-  cursor: pointer;
+  letter-spacing: var(--letter-spacing-wide);
   text-align: center;
-  border: 2px solid transparent;
+  border: 2px solid var(--button-color);
+  border-radius: var(--radius-md);
   background: transparent;
-  text-decoration: none;
+  color: var(--button-color);
+  cursor: pointer;
+  transition: var(--transition-base);
 }
 
-.btn--primary {
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-}
-
-.btn--primary:hover {
-  background: color-mix(in srgb, var(--color-secondary), transparent 90%);
-  box-shadow: var(--glow-cyan);
-  color: #ffffff;
-}
-
-.btn--secondary {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.btn--secondary:hover {
-  background: color-mix(in srgb, var(--color-primary), transparent 90%);
-  box-shadow: var(--glow-pink);
-  color: #ffffff;
+.btn:hover:not(:disabled) {
+  background: var(--button-hover-background);
+  box-shadow: var(--button-hover-shadow);
+  color: var(--color-text-primary);
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 4px;
+  outline: var(--focus-ring-width) solid var(--color-focus);
+
+  outline-offset: var(--focus-ring-offset);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary */
+
+.btn--primary {
+  --button-color: var(--color-action-secondary);
+
+  --button-hover-background: color-mix(
+    in srgb,
+    var(--button-color),
+    transparent 90%
+  );
+
+  --button-hover-shadow: var(--shadow-glow-secondary);
+}
+
+/* Secondary */
+
+.btn--secondary {
+  --button-color: var(--color-action-primary);
+  --button-hover-background: color-mix(
+    in srgb,
+    var(--button-color),
+    transparent 90%
+  );
+  --button-hover-shadow: var(--shadow-glow-primary);
 }

@@ -1,34 +1,35 @@
 .badge {
   display: inline-block;
-  padding: 0.25rem 0.6rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-wide);
   border-radius: var(--radius-sm);
-  border: 1px solid transparent;
+  border: 1px solid var(--badge-color);
+  background: var(--badge-background);
+  box-shadow: var(--badge-shadow);
+  color: var(--badge-color);
   white-space: nowrap;
 }
 
 .primary {
-  color: var(--color-primary);
-  border-color: var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary), transparent 90%);
-  box-shadow: inset 0 0 5px
-    color-mix(in srgb, var(--color-primary), transparent 80%);
+  --badge-color: var(--color-action-primary);
+  --badge-background: color-mix(in srgb, var(--badge-color), transparent 90%);
+  --badge-shadow: inset 0 0 5px
+    color-mix(in srgb, var(--badge-color), transparent 80%);
 }
 
 .secondary {
-  color: var(--color-secondary);
-  border-color: var(--color-secondary);
-  background: color-mix(in srgb, var(--color-secondary), transparent 90%);
-  box-shadow: inset 0 0 5px
-    color-mix(in srgb, var(--color-secondary), transparent 80%);
+  --badge-color: var(--color-action-secondary);
+  --badge-background: color-mix(in srgb, var(--badge-color), transparent 90%);
+  --badge-shadow: inset 0 0 5px
+    color-mix(in srgb, var(--badge-color), transparent 80%);
 }
 
 .muted {
-  color: var(--color-textMuted);
-  border-color: var(--color-borderLight);
-  background: rgba(255, 255, 255, 0.05);
+  --badge-color: var(--color-text-secondary);
+  --badge-background: rgba(255, 255, 255, 0.05);
+  --badge-shadow: none;
 }

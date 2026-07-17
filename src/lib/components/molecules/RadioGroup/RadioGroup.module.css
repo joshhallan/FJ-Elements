@@ -8,7 +8,7 @@
   padding: 1.25rem;
 }
 
-.groupWrapper:has(.errorText) {
+.groupWrapper.hasError {
   border-color: #ff4d4d;
 }
 

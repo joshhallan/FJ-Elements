@@ -1,5 +1,4 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Spinner } from "./Spinner";
 
 const meta: Meta<typeof Spinner> = {
@@ -11,7 +10,7 @@ const meta: Meta<typeof Spinner> = {
       <div
         style={{
           padding: "3rem",
-          background: "var(--color-bg)",
+          background: "var(--color-background)",
           display: "flex",
           gap: "2rem",
           alignItems: "center",
@@ -21,31 +20,77 @@ const meta: Meta<typeof Spinner> = {
       </div>
     ),
   ],
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+    },
+    color: {
+      control: "select",
+      options: ["primary", "secondary"],
+    },
+    label: {
+      control: "text",
+    },
+  },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Spinner>;
 
 export const Default: Story = {
   args: {
     size: "md",
     color: "secondary",
+    label: "Loading",
   },
 };
 
 export const Sizes: Story = {
   render: () => (
-    <>
-      <Spinner size="sm" />
-      <Spinner size="md" />
-      <Spinner size="lg" />
-    </>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        alignItems: "center",
+      }}
+    >
+      <Spinner size="sm" label="Loading small content" />
+      <Spinner size="md" label="Loading content" />
+      <Spinner size="lg" label="Loading large content" />
+    </div>
   ),
 };
 
-export const PrimaryColor: Story = {
+export const Colors: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        alignItems: "center",
+      }}
+    >
+      <Spinner size="md" color="primary" label="Loading primary" />
+
+      <Spinner size="md" color="secondary" label="Loading secondary" />
+    </div>
+  ),
+};
+
+export const CustomMessage: Story = {
   args: {
     size: "md",
-    color: "primary",
+    color: "secondary",
+    label: "Saving changes",
+  },
+};
+
+export const Playground: Story = {
+  args: {
+    size: "md",
+    color: "secondary",
+    label: "Loading",
   },
 };

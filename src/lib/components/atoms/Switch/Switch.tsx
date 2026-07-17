@@ -10,19 +10,23 @@ export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement>
 
 export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
   ({ id, label, error, className = "", ...props }, ref) => {
+    const errorId = `${id}-error`;
+
     return (
-      <div className={`${styles.wrapper} ${className}`}>
+      <div className={`${styles.wrapper} ${className}`.trim()}>
         <label htmlFor={id} className={styles.container}>
           <input
+            {...props}
             ref={ref}
             id={id}
             type="checkbox"
             role="switch"
             className={styles.hiddenInput}
-            {...props}
+            aria-describedby={error ? errorId : undefined}
+            aria-invalid={error ? "true" : undefined}
           />
 
-          <span className={styles.track}>
+          <span className={styles.track} aria-hidden="true">
             <span className={styles.thumb} />
           </span>
 
@@ -32,9 +36,11 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         </label>
 
         {error && (
-          <Typography as="small" className={styles.errorText}>
-            {error}
-          </Typography>
+          <div id={errorId}>
+            <Typography as="small" className={styles.errorText}>
+              {error}
+            </Typography>
+          </div>
         )}
       </div>
     );

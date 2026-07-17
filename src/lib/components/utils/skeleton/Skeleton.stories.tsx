@@ -1,9 +1,9 @@
 import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Skeleton } from "./Skeleton";
 
 const meta: Meta<typeof Skeleton> = {
-  title: "FJ-Elements/Utils/Skeleton",
+  title: "FJ-Elements/Atoms/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
   decorators: [
@@ -31,6 +31,14 @@ export const Default: Story = {
   },
 };
 
+export const TextBlockLoading: Story = {
+  render: () => (
+    <div style={{ width: "300px" }}>
+      <Skeleton variant="text" count={4} width="100%" />
+    </div>
+  ),
+};
+
 export const ProfileCardLoading: Story = {
   render: () => (
     <div
@@ -42,9 +50,9 @@ export const ProfileCardLoading: Story = {
       }}
     >
       <Skeleton variant="circle" width={50} height={50} />
+
       <div style={{ flex: 1 }}>
-        <Skeleton variant="text" width="80%" />
-        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" count={2} width="80%" />
       </div>
     </div>
   ),

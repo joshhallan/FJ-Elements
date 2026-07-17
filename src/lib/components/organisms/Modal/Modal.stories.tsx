@@ -1,13 +1,23 @@
 import React, { useState } from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
 import { Modal } from "./Modal";
 import { Button } from "../../atoms/Button/Button";
 
-const ModalWrapper = (args: any) => {
+type Story = StoryObj<typeof Modal>;
+
+type ModalWrapperProps = Omit<
+  React.ComponentProps<typeof Modal>,
+  "isOpen" | "onClose"
+>;
+
+const ModalWrapper = (args: ModalWrapperProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Modal trigger</Button>
+
       <Modal {...args} isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
@@ -22,7 +32,7 @@ const meta: Meta<typeof Modal> = {
       <div
         style={{
           padding: "3rem",
-          background: "var(--color-bg)",
+          background: "var(--color-background)",
           minHeight: "300px",
         }}
       >
@@ -47,46 +57,28 @@ export const Default: Story = {
       </p>
     ),
   },
-  parameters: {
-    docs: {
-      source: {
-        code: `
-<Modal 
-  isOpen={isOpen} 
-  onClose={() => setIsOpen(false)} 
-  title="Modal title"
->
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-        tenetur voluptas, voluptate excepturi non, praesentium blanditiis
-        laborum, similique odit nemo recusandae odio minima voluptatibus!
-        Asperiores earum neque harum accusamus amet.</p>
-</Modal>
-        `,
-      },
-    },
-  },
 };
 
-export const WithActions: StoryObj<typeof Modal> = {
-  render: () => (
-    <ModalWrapper
-      title="Modal with actions"
-      children={
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus odit
-          perspiciatis earum eveniet, quisquam ex ipsum praesentium dolore
-          dolorum ab tempora, repellat dicta? Quis atque cum distinctio aut
-          accusantium adipisci
-        </p>
-      }
-      footer={
-        <>
-          <Button variant="primary" onClick={() => alert("Trigger 1")}>
-            Trigger 1
-          </Button>
-          <Button onClick={() => alert("Trigger 2")}>Trigger 2</Button>
-        </>
-      }
-    />
-  ),
+export const WithActions: Story = {
+  render: (args) => <ModalWrapper {...args} />,
+  args: {
+    title: "Modal with actions",
+    children: (
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus odit
+        perspiciatis earum eveniet, quisquam ex ipsum praesentium dolore dolorum
+        ab tempora, repellat dicta? Quis atque cum distinctio aut accusantium
+        adipisci.
+      </p>
+    ),
+    footer: (
+      <>
+        <Button variant="primary" onClick={() => alert("Trigger 1")}>
+          Trigger 1
+        </Button>
+
+        <Button onClick={() => alert("Trigger 2")}>Trigger 2</Button>
+      </>
+    ),
+  },
 };

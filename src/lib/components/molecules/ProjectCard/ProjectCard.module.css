@@ -1,11 +1,15 @@
 .card {
   position: relative;
+
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--color-bg);
+
+  border: 1px solid var(--color-control-border);
+
+  background: var(--color-background);
+
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  transition: var(--transition-base);
 
   display: flex;
   flex-direction: column;
@@ -21,186 +25,147 @@
 
 .bgImage {
   position: absolute;
+
   inset: 0;
+
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.35;
-  transition: opacity 0.5s ease;
-}
 
-.card:hover .bgImage {
-  opacity: 0.5;
+  object-fit: cover;
+
+  opacity: 0.35;
+
+  transition: opacity var(--transition-base);
 }
 
 .overlay {
   position: absolute;
+
   inset: 0;
+
   background: linear-gradient(
     to top,
-    var(--color-bg) 15%,
-    rgba(15, 17, 17, 0.8) 50%,
+    var(--color-background) 15%,
+    rgba(13, 2, 33, 0.85) 55%,
     transparent 100%
   );
 }
 
 .content {
   position: relative;
+
   z-index: 1;
-  padding: 2rem;
+
+  padding: var(--spacing-xl);
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 
   flex: 1;
+
   width: 100%;
+
   box-sizing: border-box;
 }
 
 .topRow {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
-  margin-bottom: 0.5rem;
+
+  margin-bottom: var(--spacing-sm);
 }
 
 .category {
-  font-size: 10px;
+  font-size: var(--font-size-small);
+
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: 700;
-  color: var(--color-secondary);
+
+  letter-spacing: var(--letter-spacing-wide);
+
+  font-weight: var(--font-weight-bold);
+
+  color: var(--color-action-secondary);
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-white);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .description {
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
+  color: var(--color-text-muted);
+
+  margin-bottom: var(--spacing-lg);
 
   flex: 1;
 }
 
 .clamp {
   display: -webkit-box;
+
   -webkit-line-clamp: 2;
+
   -webkit-box-orient: vertical;
+
   overflow: hidden;
 }
 
 .techList {
   display: flex;
+
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+
+  gap: var(--spacing-sm);
+
+  margin-bottom: var(--spacing-lg);
 }
 
 .actions {
   display: flex;
-  gap: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: auto;
+
+  gap: var(--spacing-lg);
+
+  padding-top: var(--spacing-md);
+
+  border-top: 1px solid var(--color-border-default);
 }
 
 .link {
-  font-size: 11px;
+  font-size: var(--font-size-small);
+
   text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.4);
+
+  font-weight: var(--font-weight-bold);
+
+  letter-spacing: var(--letter-spacing-wide);
+
+  color: var(--color-text-muted);
+
   display: flex;
+
   align-items: center;
-  gap: 0.5rem;
+
+  gap: var(--spacing-xs);
+
   text-decoration: none;
-  transition: color 0.3s;
+
+  transition: color var(--transition-fast);
 }
 
 .link:hover {
-  color: var(--color-white);
+  color: var(--color-text-primary);
+}
+
+.link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+
+  outline-offset: var(--focus-ring-offset);
+
+  border-radius: var(--radius-sm);
 }
 
 .live {
-  color: var(--color-secondary);
-}
-
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  cursor: zoom-out;
-}
-
-.modalContent {
-  position: relative;
-  background: var(--color-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  cursor: default;
-}
-
-.modalImageContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #000;
-}
-
-.modalImg {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  display: block;
-}
-
-.closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1010;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.closeButton:hover {
-  background: var(--color-primary);
-  transform: scale(1.1);
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  color: var(--color-action-secondary);
 }

@@ -1,23 +1,9 @@
-import React, { createContext, useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { Toast } from "./Toast";
 import type { ToastProps } from "./Toast";
 import styles from "./Toast.module.css";
-
-export type ToastPosition =
-  | "top-left"
-  | "top-right"
-  | "bottom-left"
-  | "bottom-right";
-
-export interface ToastContextType {
-  addToast: (toast: Omit<ToastProps, "id" | "onClose">) => void;
-  removeToast: (id: string) => void;
-}
-
-export const ToastContext = createContext<ToastContextType | undefined>(
-  undefined,
-);
+import { ToastContext, type ToastPosition } from "./ToastContext";
 
 interface ToastProviderProps {
   children: React.ReactNode;
@@ -36,7 +22,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 
   const addToast = useCallback(
     (toast: Omit<ToastProps, "id" | "onClose">) => {
-      const id = Math.random().toString(36).substring(2, 9);
+      const id = crypto.randomUUID();
       setToasts((prev) => [...prev, { ...toast, id, onClose: removeToast }]);
     },
     [removeToast],
@@ -51,7 +37,13 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     <ToastContext.Provider value={value}>
       {children}
       {createPortal(
-        <div className={`${styles.toastContainer} ${styles[position]}`}>
+        <div
+          className={`${styles.toastContainer} ${styles[position]}`}
+          aria-label="Notifications"
+          aria-live="polite"
+          aria-relevant="additions"
+        >
+          {" "}
           {toasts.map((toast) => (
             <Toast key={toast.id} {...toast} />
           ))}

@@ -1,76 +1,101 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--spacing-xs);
 }
 
 .inputContainer {
   display: flex;
   align-items: center;
+  gap: var(--spacing-sm);
+
   cursor: pointer;
-  position: relative;
-  gap: 12px;
 }
 
+/* Visually hidden but still accessible */
 .hiddenInput {
   position: absolute;
+
+  width: 1px;
+  height: 1px;
+
   opacity: 0;
-  cursor: pointer;
-  height: 20px;
-  width: 20px;
-  z-index: 2;
 }
 
+/* Visual checkbox */
 .customCheck {
-  height: 20px;
-  width: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--color-borderLight);
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  width: 1.25rem;
+  height: 1.25rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
-  z-index: 1;
+
+  background: color-mix(in srgb, var(--color-surface), transparent 20%);
+
+  border: 1px solid var(--color-borderLight);
+  border-radius: var(--radius-sm);
+
+  transition: var(--transition-base);
 }
 
+/* Hover state */
 .inputContainer:hover .customCheck {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--color-secondary);
 }
 
+/* Checked state */
 .hiddenInput:checked + .customCheck {
   background: var(--color-secondary);
+
   border-color: var(--color-secondary);
-  box-shadow: 0 0 10px var(--glow-secondary);
+
+  box-shadow: var(--glow-cyan);
 }
 
-.customCheck::after {
-  content: "";
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  display: none;
-}
-
+/* Tick */
 .hiddenInput:checked + .customCheck::after {
-  display: block;
+  content: "✓";
+
+  color: var(--color-bg);
+
+  font-size: 0.9rem;
+
+  font-weight: var(--weight-bold);
 }
 
+/* Keyboard focus */
 .hiddenInput:focus-visible + .customCheck {
-  outline: 2px solid var(--color-secondary);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-white);
+
+  outline-offset: 3px;
 }
 
+/* Disabled state */
+.hiddenInput:disabled + .customCheck {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+.hiddenInput:disabled ~ .label {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+}
+
+/* Label */
 .label {
+  color: var(--color-textDefault);
+
   cursor: pointer;
-  color: var(--color-white);
-  opacity: 0.9;
 }
 
+/* Error */
 .errorText {
+  margin-left: calc(1.25rem + var(--spacing-sm));
+
   color: #ff4d4d;
-  margin-left: 32px;
 }

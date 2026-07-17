@@ -1,7 +1,5 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { TextArea } from "./TextArea";
-import { Container } from "../../layout/Grid/";
 
 const meta: Meta<typeof TextArea> = {
   title: "FJ-Elements/Forms/TextArea",
@@ -9,16 +7,21 @@ const meta: Meta<typeof TextArea> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <Container>
-        <div style={{ marginTop: "2rem", maxWidth: "500px" }}>
-          <Story />
-        </div>
-      </Container>
+      <div
+        style={{
+          padding: "2rem",
+          maxWidth: "500px",
+          background: "var(--color-background)",
+        }}
+      >
+        <Story />
+      </div>
     ),
   ],
 };
 
 export default meta;
+
 type Story = StoryObj<typeof TextArea>;
 
 export const Basic: Story = {
@@ -31,7 +34,7 @@ export const Basic: Story = {
 
 export const Required: Story = {
   args: {
-    id: "bio-required",
+    id: "bio",
     label: "Biography",
     placeholder: "Tell us your story...",
     required: true,
@@ -40,9 +43,28 @@ export const Required: Story = {
 
 export const ErrorState: Story = {
   args: {
-    id: "feedback-error",
+    id: "feedback",
     label: "Feedback",
     defaultValue: "Too short",
     error: "Please provide at least 50 characters of feedback.",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    id: "disabled",
+    label: "Disabled message",
+    disabled: true,
+    value: "This field cannot currently be edited.",
+  },
+};
+
+export const LongContent: Story = {
+  args: {
+    id: "description",
+    label: "Description",
+    defaultValue:
+      "This is an example of a textarea with longer content to demonstrate scrolling behaviour.",
+    rows: 8,
   },
 };

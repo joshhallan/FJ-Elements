@@ -1,12 +1,18 @@
 .toastContainer {
   position: fixed;
+
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+
   z-index: 9999;
+
   pointer-events: none;
-  max-width: 400px;
+
+  max-width: 28rem;
+
   width: calc(100% - (var(--spacing-lg) * 2));
+
   padding: var(--spacing-lg);
 }
 

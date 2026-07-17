@@ -10,6 +10,10 @@ interface RadioGroupProps {
   className?: string;
 }
 
+interface RadioInjectableProps {
+  name: string;
+}
+
 export const RadioGroup = ({
   label,
   name,
@@ -18,31 +22,36 @@ export const RadioGroup = ({
   className = "",
 }: RadioGroupProps) => {
   const errorId = `${name}-error`;
+  const wrapperClasses =
+    `${styles.groupWrapper} ${error ? styles.hasError : ""} ${className}`.trim();
 
   return (
     <fieldset
-      className={`${styles.groupWrapper} ${className}`}
+      className={wrapperClasses}
       aria-describedby={error ? errorId : undefined}
+      aria-invalid={!!error}
     >
       <legend>
-        <Typography as="small" className={styles.legend}>
+        <Typography as="span" className={styles.legend}>
           {label}
         </Typography>
       </legend>
 
       <div className={styles.childrenContainer}>
         {React.Children.map(children, (child) => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child, { name } as any);
+          if (React.isValidElement<RadioInjectableProps>(child)) {
+            return React.cloneElement(child, { name });
           }
           return child;
         })}
       </div>
 
       {error && (
-        <Typography as="small" className={styles.errorText}>
-          {error}
-        </Typography>
+        <div id={errorId}>
+          <Typography as="small" className={styles.errorText}>
+            {error}
+          </Typography>
+        </div>
       )}
     </fieldset>
   );

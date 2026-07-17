@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { IconButton } from "./IconButton";
 import { FaGithub, FaTimes, FaExternalLinkAlt } from "react-icons/fa";
 
@@ -10,6 +10,30 @@ const meta: Meta<typeof IconButton> = {
 
 export default meta;
 type Story = StoryObj<typeof IconButton>;
+
+export const Primary: Story = {
+  args: {
+    icon: <FaTimes />,
+    label: "Close modal",
+    variant: "primary",
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    icon: <FaExternalLinkAlt />,
+    label: "Open external link",
+    variant: "secondary",
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    icon: <FaGithub />,
+    label: "View GitHub profile",
+    variant: "ghost",
+  },
+};
 
 export const Variants: Story = {
   render: () => (
