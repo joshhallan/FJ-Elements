@@ -10,7 +10,6 @@
   --pink-500: #ee227d;
   --cyan-500: #30c0b7;
   --coral-500: #fd8083;
-  --blue-500: #498099;
 
   --white: #ffffff;
   --black: #000000;
@@ -109,7 +108,7 @@
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
-  --radius-lg: 10px;
+  --radius-lg: 0.625rem;
   --radius-full: 9999px;
 
   /* ==========================================================

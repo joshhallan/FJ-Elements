@@ -1,75 +1,44 @@
-import React from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Typography } from "./Typography";
 
 const meta: Meta<typeof Typography> = {
-  title: "FJ-Elements/Typography/Typography",
+  title: "FJ-Elements/Foundation/Typography",
   component: Typography,
   tags: ["autodocs"],
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Typography>;
 
 export const Scale: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <Typography as="h1">
-        H1 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-        possimus delectus cumque reiciendis aliquid corporis animi quae, nulla,
-        illo, atque assumenda itaque tempore? Id perferendis, libero dolor
-        possimus iure explicabo.
-      </Typography>
-      <Typography as="h2">
-        H2 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-        harum eos autem perspiciatis nisi veniam, sed possimus similique
-        inventore hic mollitia voluptatibus quam. Maxime hic nam quam minima
-        odio consequuntur?
-      </Typography>
-      <Typography as="h3">
-        H3 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-        harum eos autem perspiciatis nisi veniam, sed possimus similique
-        inventore hic mollitia voluptatibus quam. Maxime hic nam quam minima
-        odio consequuntur?
-      </Typography>
-      <Typography as="h3" gradient>
-        H3 (Gradient) - Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Magnam harum eos autem perspiciatis nisi veniam, sed possimus similique
-        inventore hic mollitia voluptatibus quam. Maxime hic nam quam minima
-        odio consequuntur?
-      </Typography>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+      }}
+    >
+      <Typography as="h1">H1 - Heading One</Typography>
+
+      <Typography as="h2">H2 - Heading Two</Typography>
+
+      <Typography as="h3">H3 - Heading Three</Typography>
+
+      <Typography as="h4">H4 - Heading Four</Typography>
+
+      <Typography as="h5">H5 - Heading Five</Typography>
+
+      <Typography as="h6">H6 - Heading Six</Typography>
+
       <Typography as="p">
-        P - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
-        delectus culpa placeat, recusandae, nihil libero blanditiis amet neque
-        eveniet voluptates, provident minima accusamus velit dolores laboriosam
-        quam consectetur laborum consequuntur!
+        P - Body text paragraph example demonstrating the default reading style
+        used throughout the component library.
       </Typography>
+
       <Typography as="small">
-        Small - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-        saepe id et qui necessitatibus optio at vero velit nulla quia nesciunt,
-        cumque sapiente! Repellat hic ullam sapiente iure nam! Magni!
-      </Typography>
-    </div>
-  ),
-};
-
-export const GradientHeading: Story = {
-  args: {
-    as: "h1",
-    gradient: true,
-    children: "Gradient Hero",
-  },
-};
-
-export const Modifiers: Story = {
-  render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <Typography as="h1" glow>
-        Glowing Heading
-      </Typography>
-
-      <Typography as="h2" gradient>
-        Gradient Heading
+        Small - Supporting text for metadata and secondary information.
       </Typography>
     </div>
   ),
@@ -77,16 +46,64 @@ export const Modifiers: Story = {
 
 export const Weights: Story = {
   render: () => (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
+    >
       <Typography weight="regular">Regular</Typography>
 
       <Typography weight="medium">Medium</Typography>
 
-      <Typography weight="semibold">Semi Bold</Typography>
+      <Typography weight="semibold">Semibold</Typography>
 
       <Typography weight="bold">Bold</Typography>
 
       <Typography weight="extrabold">Extra Bold</Typography>
+    </div>
+  ),
+};
+
+export const Modifiers: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+      }}
+    >
+      <Typography as="h2" gradient>
+        Gradient Heading
+      </Typography>
+
+      <Typography as="h2" glow>
+        Glowing Heading
+      </Typography>
+
+      <Typography as="h2" gradient glow>
+        Gradient + Glow Heading
+      </Typography>
+    </div>
+  ),
+};
+
+export const Alignment: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "1rem",
+      }}
+    >
+      <Typography align="left">Left aligned text</Typography>
+
+      <Typography align="center">Centre aligned text</Typography>
+
+      <Typography align="right">Right aligned text</Typography>
     </div>
   ),
 };

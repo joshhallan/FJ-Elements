@@ -8,7 +8,6 @@ import { playwright } from "@vitest/browser-playwright";
 
 // Library mode plugins
 import dts from "vite-plugin-dts";
-// REMOVED: cssInjectedByJsPlugin import
 
 const dirname =
   typeof __dirname !== "undefined"
@@ -21,21 +20,25 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
       tsconfigPath: "./tsconfig.app.json",
-      include: ["src/**/*"],
-      exclude: ["src/**/*.stories.tsx", "src/**/*.test.tsx"],
+      include: ["src"],
+      exclude: [
+        "src/**/*.stories.tsx",
+        "src/**/*.test.tsx",
+        "src/App.tsx",
+        "src/main.tsx",
+      ],
       compilerOptions: {
         noEmit: false,
       },
     }),
-    // REMOVED: cssInjectedByJsPlugin() from here
   ],
   build: {
-    cssCodeSplit: false, // CRITICAL: Combines all tokens, resets, and component styles into a single dist/style.css
+    cssCodeSplit: false, // Combines tokens, resets, and component styles into a single CSS bundle
     lib: {
       entry: path.resolve(dirname, "src/index.ts"),
       name: "FjElements",
       formats: ["es", "umd"],
-      fileName: (format) => `index.${format === "es" ? "esm" : "js"}.js`,
+      fileName: (format) => (format === "es" ? "index.esm.js" : "index.js"),
     },
     rollupOptions: {
       external: ["react", "react-dom"],
