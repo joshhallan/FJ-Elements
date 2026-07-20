@@ -29,7 +29,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Storybook
         run: npm run build-storybook
@@ -39,6 +39,8 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
 
       - name: Deploy to GitHub Pages
         id: deployment
