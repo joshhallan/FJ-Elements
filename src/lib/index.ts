@@ -40,4 +40,4 @@ export * from "./components/layout/Section";
 export * from "./components/typography";
 
 // Utils
-export * from "./components/utils/Skeleton";
+export * from "./components/utils/skeleton";
