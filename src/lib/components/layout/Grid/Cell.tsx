@@ -14,6 +14,7 @@ export const Cell = ({
   medium,
   large,
   className = "",
+  style,
   ...props
 }: CellProps) => {
   return (
@@ -24,6 +25,7 @@ export const Cell = ({
           "--col-sm": `span ${small}`,
           "--col-md": medium ? `span ${medium}` : "var(--col-sm)",
           "--col-lg": large ? `span ${large}` : "var(--col-md, var(--col-sm))",
+          ...style,
         } as React.CSSProperties
       }
       {...props}
