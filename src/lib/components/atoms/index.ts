@@ -3,6 +3,7 @@ export { Button } from "./Button";
 export { Checkbox } from "./Checkbox";
 export { Divider } from "./Divider";
 export { IconButton } from "./IconButton";
+export { IconLink } from "./IconLink";
 export { Link } from "./Link";
 export { Radio } from "./Radio";
 export { Select } from "./Select";
