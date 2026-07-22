@@ -1,0 +1,31 @@
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  transition: var(--transition-base);
+
+  color: inherit;
+}
+
+.sm {
+  width: 32px;
+  height: 32px;
+}
+
+.md {
+  width: 44px;
+  height: 44px;
+}
+
+.lg {
+  width: 48px;
+  height: 48px;
+}
+
+.iconLink:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}

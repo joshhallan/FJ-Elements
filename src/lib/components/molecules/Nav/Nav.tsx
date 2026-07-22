@@ -41,7 +41,7 @@ export const Nav = ({
         <div className={styles.logo}>
           {renderLink(
             {
-              label: "",
+              label: "Home",
               href: brandHref,
             },
             styles.logoLink,
