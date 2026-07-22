@@ -25,22 +25,43 @@ export const Default: Story = {
       </div>
     ),
   ],
+
   args: {
-    brand: (
-      <Typography as="span">
-        FJ-
-        <Typography as="span" gradient>
-          ELEMENTS
-        </Typography>
-      </Typography>
-    ),
     links: [
-      { label: "Projects", href: "/projects" },
-      { label: "Career", href: "/career" },
-      { label: "Github", href: "https://github.com", external: true },
+      {
+        href: "/",
+        ariaLabel: "Home",
+        label: (
+          <Typography as="span">
+            FJ-
+            <Typography as="span" gradient>
+              ELEMENTS
+            </Typography>
+          </Typography>
+        ),
+      },
+      {
+        label: "Projects",
+        href: "/projects",
+      },
+      {
+        label: "Career",
+        href: "/career",
+      },
+      {
+        label: "Github",
+        href: "https://github.com",
+        external: true,
+      },
     ],
+
     renderLink: (link, className, onClick) => (
-      <a href={link.href} className={className} onClick={onClick}>
+      <a
+        href={link.href}
+        className={className}
+        onClick={onClick}
+        aria-label={link.ariaLabel}
+      >
         {link.label}
       </a>
     ),

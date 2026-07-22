@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import styles from "./Nav.module.css";
 
 export interface NavLink {
-  label: string;
+  label: React.ReactNode;
   href: string;
   external?: boolean;
+  ariaLabel?: string;
 }
 
 export interface NavProps {
   links: NavLink[];
-  brand?: React.ReactNode;
-  brandHref?: string;
 
   renderLink: (
     link: NavLink,
@@ -19,12 +18,7 @@ export interface NavProps {
   ) => React.ReactNode;
 }
 
-export const Nav = ({
-  links,
-  renderLink,
-  brand,
-  brandHref = "/",
-}: NavProps) => {
+export const Nav = ({ links, renderLink }: NavProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -35,24 +29,17 @@ export const Nav = ({
     setIsMenuOpen(false);
   };
 
+  const [brandLink, ...navLinks] = links;
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.inner}>
         <div className={styles.logo}>
-          {renderLink(
-            {
-              label: "Home",
-              href: brandHref,
-            },
-            styles.logoLink,
-            closeMenu,
-          )}
-
-          {brand}
+          {brandLink && renderLink(brandLink, styles.logoLink, closeMenu)}
         </div>
 
         <div className={styles.desktopNav}>
-          {links.map((link) => renderLink(link, styles.navLink))}
+          {navLinks.map((link) => renderLink(link, styles.navLink))}
         </div>
 
         <button
@@ -82,7 +69,7 @@ export const Nav = ({
           isMenuOpen ? styles.overlayOpen : ""
         }`}
       >
-        {links.map((link) => renderLink(link, styles.navLink, closeMenu))}
+        {navLinks.map((link) => renderLink(link, styles.navLink, closeMenu))}
       </div>
     </nav>
   );
