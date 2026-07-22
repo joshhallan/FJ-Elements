@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaMedium } from "react-icons/fa";
 import { IconLink } from "./IconLink";
 
 const meta: Meta<typeof IconLink> = {
-  title: "Atoms/IconLink",
+  title: "FJ-Elements/Atoms/IconLink",
   component: IconLink,
   parameters: {
     layout: "centered",
